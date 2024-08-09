@@ -56,6 +56,18 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    let temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return temp;
+  }
 }
 
 const myLinkedList = new LinkedList(7);
@@ -68,4 +80,5 @@ myLinkedList.push(3);
 myLinkedList.push(6);
 myLinkedList.unshift(8);
 myLinkedList.unshift(98);
-console.log(myLinkedList);
+// myLinkedList.shift();
+console.log(myLinkedList.shift());
