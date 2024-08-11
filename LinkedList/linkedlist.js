@@ -79,6 +79,15 @@ class LinkedList {
     }
     return temp;
   }
+
+  set(index, value) {
+    let temp = this.get(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 const myLinkedList = new LinkedList(7);
@@ -95,3 +104,6 @@ console.log("LL" + " " + myLinkedList);
 // myLinkedList.shift();
 console.log(myLinkedList.shift());
 console.log("get" + " " + myLinkedList.get(2));
+
+console.log(myLinkedList.set(1, 5));
+console.log(myLinkedList.get(1));
