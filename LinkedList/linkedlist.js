@@ -68,17 +68,30 @@ class LinkedList {
     }
     return temp;
   }
+
+  get(index) {
+    if (index < 0 || index > this.length) {
+      return undefined;
+    }
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+    return temp;
+  }
 }
 
 const myLinkedList = new LinkedList(7);
 myLinkedList.push(4);
 
-console.log(myLinkedList);
-myLinkedList.pop();
-console.log(myLinkedList);
+// console.log(myLinkedList);
+// myLinkedList.pop();
+// console.log(myLinkedList);
 myLinkedList.push(3);
 myLinkedList.push(6);
-myLinkedList.unshift(8);
-myLinkedList.unshift(98);
+// myLinkedList.unshift(8);
+// myLinkedList.unshift(98);
+console.log("LL" + " " + myLinkedList);
 // myLinkedList.shift();
 console.log(myLinkedList.shift());
+console.log("get" + " " + myLinkedList.get(2));
