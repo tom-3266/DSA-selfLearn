@@ -100,6 +100,34 @@ class LinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    const before = this.get(index - 1);
+    const temp = before.next;
+
+    before.next = temp.next;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next = temp.next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+  }
 }
 
 const myLinkedList = new LinkedList(7);
@@ -121,3 +149,4 @@ console.log(myLinkedList.set(1, 5));
 console.log(myLinkedList.get(1));
 console.log(myLinkedList.insert(1, 1));
 console.log(myLinkedList.get(1));
+console.log(myLinkedList.reverse());
