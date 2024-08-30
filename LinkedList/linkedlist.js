@@ -70,7 +70,7 @@ class LinkedList {
   }
 
   get(index) {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index >= this.length) {
       return undefined;
     }
     let temp = this.head;
@@ -87,6 +87,18 @@ class LinkedList {
       return true;
     }
     return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+    const newNode = new Node(value);
+    let temp = this.get(index - 1);
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
   }
 }
 
@@ -106,4 +118,6 @@ console.log(myLinkedList.shift());
 console.log("get" + " " + myLinkedList.get(2));
 
 console.log(myLinkedList.set(1, 5));
+console.log(myLinkedList.get(1));
+console.log(myLinkedList.insert(1, 1));
 console.log(myLinkedList.get(1));
